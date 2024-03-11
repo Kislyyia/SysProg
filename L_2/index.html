@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список дел</title>
+    <style>
+        h1 {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .done {
+            text-decoration: line-through;
+        }
+        footer {
+            border-top: 1px solid #ccc;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Список дел</h1>
+    <input type="text" id="taskInput" placeholder="Введите задачу...">
+    <button onclick="createTask()">Создать</button>
+    <button onclick="clearAll()">Очистить всё</button>
+    
+    <ul id="taskList">
+        <!-- Список дел будет формироваться здесь -->
+    </ul>
+    
+    <footer>
+        <p>Copyright © 2022</p>
+    </footer>
+    
+    <script>
+        function createTask() {
+            let taskInput = document.getElementById("taskInput");
+            let taskText = taskInput.value;
+            if (taskText !== "") {
+                let currentDate = new Date();
+                let dateString = currentDate.toLocaleDateString();
+                let newTask = document.createElement("li");
+                newTask.innerHTML = `
+                    <input type="checkbox" onchange="markAsDone(this)">
+                    <span>${taskText} (${dateString})</span>
+                    <button onclick="deleteTask(this)"><i class="far fa-times-circle"></i></button>
+
+                `;
+                document.getElementById("taskList").appendChild(newTask);
+                taskInput.value = "";
+            } else {
+                alert("Пожалуйста, введите задачу!");
+            }
+        }
+        
+        function markAsDone(checkbox) {
+            if (checkbox.checked) {
+                checkbox.nextElementSibling.classList.add("done");
+            } else {
+                checkbox.nextElementSibling.classList.remove("done");
+            }
+        }
+        
+        function deleteTask(button) {
+            button.parentNode.remove();
+        }
+        
+        function clearAll() {
+            document.getElementById("taskList").innerHTML = "";
+        }
+    </script>
+</body>
+</html>

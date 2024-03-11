@@ -1,0 +1,63 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #366642;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #da5a5a;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: 'Arial', sans-serif;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #007bff;
+    color: #93c7e9;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #366642;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    background-color: #366642;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+li:hover {
+    background-color: #366642;
+}
+
+.done {
+    text-decoration: line-through;
+    color: #808080;
+}
+
+footer {
+    border-top: 1px solid #0d5212;
+    text-align: center;
+    padding: 10px 0;
+}
+
+button:hover, input[type="checkbox"]:hover {
+    color: #f00;
+}
